@@ -331,16 +331,16 @@ class Queen(ChessPiece):
             boolean: True if valid position otherewise False
 
         Examples:
-            >>> piece = Queen('c1')
-            >>> piece.is_legal_move('f4')
+            >>> piece = Queen('d1')
+            >>> piece.is_legal_move('g4')
             True
 
-            >>> piece = Queen('c1')
-            >>> piece.is_legal_move('a3')
+            >>> piece = Queen('d1')
+            >>> piece.is_legal_move('d5')
             True
 
-            >>> piece = Queen'c1')
-            >>> piece.is_legal_move('d3')
+            >>> piece = Queen'd1')
+            >>> piece.is_legal_move('g4')
             False
         """
         new_posnum = self.algebraic_to_numeric(position)
@@ -395,8 +395,8 @@ class Knight(ChessPiece):
             >>> piece.is_legal_move('c3')
             True
 
-            >>> piece = Knight('c3')
-            >>> piece.is_legal_move('e4')
+            >>> piece = Knight('b1')
+            >>> piece.is_legal_move('d2')
             True
 
             >>> piece = Knight'b1')
