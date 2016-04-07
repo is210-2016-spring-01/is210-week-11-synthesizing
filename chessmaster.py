@@ -340,7 +340,7 @@ class Queen(ChessPiece):
             True
 
             >>> piece = Queen'd1')
-            >>> piece.is_legal_move('g4')
+            >>> piece.is_legal_move('h4')
             False
         """
         new_posnum = self.algebraic_to_numeric(position)
