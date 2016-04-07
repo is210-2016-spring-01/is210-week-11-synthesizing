@@ -57,17 +57,20 @@ class ChessPiece(object):
             >>> piece.algebraic_to_numeric('h9')
             None
         """
+        posnum = (1, 2)
 
         if len(tile) != 2:
-            return None
+            posnum = None
 
-        posfile = 'abcdefgh'.find(tile[0].lower())
-        posrank = '12345678'.find(tile[1])
+        else:
+            posfile = 'abcdefgh'.find(tile[0].lower())
+            posrank = '12345678'.find(tile[1])
+            posnum = (posfile, posrank)
 
-        if posfile < 0 or posrank < 0:
-            return None
+            if posfile < 0 or posrank < 0:
+                posnum = None
 
-        return posfile, posrank
+        return posnum
 
     def is_legal_move(self, position):
         """Converts a chess board alpha-numeric position to two numeric values.
