@@ -61,13 +61,13 @@ class ChessPiece(object):
         if len(tile) != 2:
             return None
 
-        pos1 = 'abcdefgh'.find(tile[0].lower())
-        pos2 = '12345678'.find(tile[1])
+        posfile = 'abcdefgh'.find(tile[0].lower())
+        posrank = '12345678'.find(tile[1])
 
-        if pos1 < 0 or pos2 < 0:
+        if posfile < 0 or posrank < 0:
             return None
 
-        return (pos1, pos2)
+        return posfile, posrank
 
     def is_legal_move(self, position):
         """Converts a chess board alpha-numeric position to two numeric values.
