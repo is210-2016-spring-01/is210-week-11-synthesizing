@@ -180,7 +180,9 @@ class Rook(ChessPiece):
         if not new_posnum:
             return False
         else:
-            new_file, new_rank = new_posnum
+            new_file = new_posnum[0]
+            new_rank = new_posnum[1]
+        
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       if one or other is different it is a (potentially) valid move
