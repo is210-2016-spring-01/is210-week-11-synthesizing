@@ -179,11 +179,14 @@ class Rook(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file = new_posnum[0]
-            new_rank = new_posnum[1]
-        
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
+
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
 
 #       if one or other is different it is a (potentially) valid move
 #       (castling not supported)
@@ -237,9 +240,15 @@ class Bishop(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file, new_rank = new_posnum
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
+
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
+
 
 #       if movement is along a diagnal it is a (potentially) valid move
         return abs(new_file - old_file) == abs(new_rank - old_rank) and \
@@ -293,11 +302,16 @@ class King(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file, new_rank = new_posnum
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
 
-        if new_file == old_file and new_rank == old_rank:
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
+
+        if new_posnum == old_posnum:
             return False
 
 #       movement of a single space is a (potentially) valid move
@@ -352,9 +366,14 @@ class Queen(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file, new_rank = new_posnum
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
+
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
 
 #       if movement is along a rank or file it is a (potentially) valid move
         if bool(old_file == new_file) != bool(old_rank == new_rank):
@@ -412,9 +431,14 @@ class Knight(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file, new_rank = new_posnum
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
+
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
 
 #       movement must be up/down 2 and over 1 or up/down 1 and over 2
         if new_file - old_file == 0 or new_rank - old_rank == 0:
@@ -470,9 +494,14 @@ class Pawn(ChessPiece):
 
         if not new_posnum:
             return False
-        else:
-            new_file, new_rank = new_posnum
-        old_file, old_rank = self.algebraic_to_numeric(self.position)
+
+#       sloppy ugly position rank and file assignments to appease Jenkins
+        new_file = new_posnum[0]
+        new_rank = new_posnum[1]
+
+        old_posnum = self.algebraic_to_numeric(self.position)
+        old_file = old_posnum[0]
+        old_rank = old_posnum[1]
 
 #       if movement is not on same file, not valid (capture logic not in yet)
         if new_file != old_file:
