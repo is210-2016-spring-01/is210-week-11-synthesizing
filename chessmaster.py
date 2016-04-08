@@ -179,8 +179,8 @@ class Rook(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       if one or other is different it is a (potentially) valid move
@@ -235,8 +235,8 @@ class Bishop(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       if movement is along a diagnal it is a (potentially) valid move
@@ -291,8 +291,8 @@ class King(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
         if new_file == old_file and new_rank == old_rank:
@@ -350,8 +350,8 @@ class Queen(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       if movement is along a rank or file it is a (potentially) valid move
@@ -410,8 +410,8 @@ class Knight(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       movement must be up/down 2 and over 1 or up/down 1 and over 2
@@ -468,8 +468,8 @@ class Pawn(ChessPiece):
 
         if not new_posnum:
             return False
-
-        new_file, new_rank = new_posnum
+        else:
+            new_file, new_rank = new_posnum
         old_file, old_rank = self.algebraic_to_numeric(self.position)
 
 #       if movement is not on same file, not valid (capture logic not in yet)
