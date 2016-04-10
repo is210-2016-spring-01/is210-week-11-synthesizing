@@ -15,7 +15,7 @@ class ChessPiece(object):
 
     def __init__(self, position):
         """constructor.
-        Args:
+        Arguments:
             None
 
         Returns:
@@ -35,7 +35,7 @@ class ChessPiece(object):
         """Takes a single string argument, tile, and converts it to a tuple
             with two values, a 0-based y-coordinate and a 0-based x-coordinate.
 
-        Args:
+        Arguments:
             x_coor (str): X-coor letter references.
             y_coor (list): Y-coor Number references.
 
@@ -59,7 +59,7 @@ class ChessPiece(object):
 
     def is_legal_move(self, position):
         """checls tp see if the move is allowed.
-        Args:
+        Arguments:
             None
         Returns:
             False (bool): Value if move is illegal.
@@ -76,7 +76,7 @@ class ChessPiece(object):
     def move(self, position):
         """Moves the piece from one tile to another.
 
-        Args:
+        Arguments:
             None
 
         Returns:
@@ -220,7 +220,7 @@ class ChessMatch(object):
 
     def __init__(self, pieces=None):
         """Creates Match if Pieces are not equivilent to None.
-        Args:
+        Arguments:
             pieces (dict): Dictionary of Chess Pieces.
             log (list): List of moves to be used for logging positions and time.
         Returns:
@@ -241,7 +241,7 @@ class ChessMatch(object):
 
     def reset(self):
         """Resets log and changes pieces to prefixed list and positions in game.
-        Args:
+        Arguments:
             log (list): List of logged moves in prior game sets to empty.
             pieces (dict): Dictionary of prior games piece keys and values.
         Returns:
@@ -266,7 +266,7 @@ class ChessMatch(object):
 
     def move(self, piece, position):
         """Moves position of pieces in a Chess game.
-        Args:
+        Arguments:
             chesspiece (object): Object holds chesspiece key and position.
             moved (tuple): piece positions and timestamp
         Returns:

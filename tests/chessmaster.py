@@ -266,7 +266,7 @@ class ChessMatch(object):
 
     def move(self, piece, position):
         """Moves position of pieces in a Chess game.
-        Args:
+        Arguments:
             chesspiece (object): Object holds chesspiece key and position.
             moved (tuple): piece positions and timestamp
         Returns:
