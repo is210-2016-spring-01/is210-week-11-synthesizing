@@ -162,7 +162,7 @@ class Bishop(ChessPiece):
         prevmove = self.algebraic_to_numeric(self.position)
         newmove = self.algebraic_to_numeric(position)
         if ChessPiece.is_legal_move(self, position):
-            if (prevmove[0] - newmove[0]) == (prevmove[1] - newmove[1]):
+            if abs(prevmove[0] - newmove[0]) == abs(prevmove[1] - newmove[1]):
                 return True
             else:
                 return False
