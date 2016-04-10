@@ -208,6 +208,11 @@ class King(ChessPiece):
                     return True
                 else:
                     return False
+            elif abs(newmove[1] - prevmove[1]) == 1:
+                if abs(newmove[0] - prevmove[0]) == 1:
+                    return True
+                else:
+                    return False
         else:
             return False
 
@@ -285,3 +290,6 @@ class ChessMatch(object):
             self.log.append(newmove)
             self.pieces.pop(piece)
             self.pieces[newmove[1]] = piecemove
+            return True
+        else:
+            return False
