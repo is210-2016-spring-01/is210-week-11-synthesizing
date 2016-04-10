@@ -1,26 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""ChessMaster"""
+"""Wk11 synthesizing task 1 thru 5 - chessmaster!"""
 
 import time
 
 
 class ChessPiece(object):
-    """Places Chess Pieces on Chess Board
+    """stores chesspeices on the board.
 
     Attributes:
-        ChessPiece(str): Stores the position of the chess piece
+        prefix (str): Holds index of Piece Object.
     """
     prefix = ''
 
     def __init__(self, position):
-        """Constructor for the ChessPiece Class
-
-        Arguments:
+        """constructor.
+        Args:
             None
 
         Returns:
-            excep(str): Default, empty string.
+            excep (str): default, empty string.
 
         Examples:
             None
@@ -33,16 +32,15 @@ class ChessPiece(object):
             self.moves = []
 
     def algebraic_to_numeric(self, tile):
-        """Takes the tile argument(a single string), which represents the
-        position of chess piece, and then converts the algebraic movement into a
-        tuple that contains x,y - coor in a numerical value
+        """Takes a single string argument, tile, and converts it to a tuple
+            with two values, a 0-based y-coordinate and a 0-based x-coordinate.
 
         Args:
-            x_coor (str): X-coor, in Letter Reference.
-            y_coor (list): Y-coor, in Numerical Reference.
+            x_coor (str): X-coor letter references.
+            y_coor (list): Y-coor Number references.
 
         Returns:
-            A (tuple): x,y axis.
+            A (tuple): Value of X-Axis and Y-Axis.
 
         Examples:
         >>> piece.algebraic_to_numeric('e7')
@@ -60,15 +58,14 @@ class ChessPiece(object):
                 return None
 
     def is_legal_move(self, position):
-        """Checks if the move is legal or not.
-
-        Arguments:
+        """checls tp see if the move is allowed.
+        Args:
             None
         Returns:
-            False (bool): Value == Illegal.
-            True (bool): Value == Legal.
+            False (bool): Value if move is illegal.
+            True (bool): Value if move is legal.
         Examples:
-         >>> piece.move('i10')
+         >>> piece.move('j9')
         False
         """
         if not self.algebraic_to_numeric(position):
@@ -77,15 +74,14 @@ class ChessPiece(object):
             return True
 
     def move(self, position):
-        """Moves the chesspiece from one place to another on the chessboard.
+        """Moves the piece from one tile to another.
 
-        Arguments:
+        Args:
             None
 
         Returns:
-            move(tuple): Stores the previous move, next move and then records
-            timestamp of a chesspiece
-            False (bool): Move == illegal.
+            move (tuple): Position of past move, new move, and timestamp.
+            False (bool): if move is an illegal one.
 
         Examples:
         >>> piece.move('e7')
@@ -111,33 +107,32 @@ class ChessPiece(object):
 
 
 class Rook(ChessPiece):
-    """Object of the Rook Class ChessPiece"""
+    """ChessPiece Object (Rook)"""
     prefix = 'R'
 
     def __init__(self, position):
-        """An Instance of the rook ChessPiece
-        Args:
-            position: Alphanumeric position.
+        """An instance.
+        Arguments:
+            position: alphanumeric position.
         Attribute:
-            prefix: default R(str)
+            prefix: a string; Defaults at 'R'
         """
         ChessPiece.__init__(self, position)
 
     def is_legal_move(self, position):
-        """The constructor for the Rook chesspiece.
-        Args:
-            position: A legal position on the chessboard.
+        """Rook Constructor.
+        Argumentss:
+            position: position on board.
         Returns:
-            Returns True or False depending on if the move is legal.
+            Checks move is legal.
         Examples:
-            >>> rook = Rook('b3')
+            >>> rook = Rook('a1')
             >>> rook.prefix
             'R'
-            >>> rook.move('a2')
+            >>> rook.move('b2')
             False
-            >>> rook.move('c3')
-            >>> ('Rb3', 'Rc3', 1459861158.692583)
-
+            >>> rook.move('h1')
+            ('Ra1', 'Rh1', 1413252817.89340)
         """
         if ChessPiece.is_legal_move(self, position):
             if self.position[0] is position[0]:
@@ -151,30 +146,25 @@ class Rook(ChessPiece):
 
 
 class Bishop(ChessPiece):
-    """Object the Bishop ChessPiece.
-
-    Attributes:
-        prefix(str) default B(str)
+    """ChessPiece Object Named Bishop
     """
     prefix = 'B'
 
     def __init__(self, position):
-
-        """An Instance of the Bishop ChessPiece
-        Args:
-            position: Alphanumeric position.
+        """An instance.
+        Arguments:
+            position: alphanumeric position.
         Attribute:
-            prefix: default R(str)
+            prefix: string defaulted to 'B'.
         """
-
         ChessPiece.__init__(self, position)
 
     def is_legal_move(self, position):
         """Constructor for Bishop.
-        Args:
-            position: an allowed position on the board.
+        Arguments:
+            position: position on the board.
         Returns:
-            A coordinate value if the move is legal or not.
+            Checks if move is legal.
         Examples:
             >>> bishop = Bishop('a1')
             >>> bishop.prefix
@@ -184,30 +174,26 @@ class Bishop(ChessPiece):
             >>> bishop.move('c3')
             ('Ba1', 'Bc1', 1413252817.89340)
         """
-        old = self.algebraic_to_numeric(position)
-        new = self.algebraic_to_numeric(position)
+        oldpos = self.algebraic_to_numeric(position)
+        newpos = self.algebraic_to_numeric(position)
         if ChessPiece.is_legal_move(self, position):
-            if (old[0] + new[0]) % (old[1] + new[1]) is 0:
+            if (oldpos[0] + newpos[0]) % (oldpos[1] + newpos[1]) is 0:
                 return True
         else:
             return False
 
 
 class King(ChessPiece):
-        """An Instance of the King ChessPiece
-        Args:
-            position: Alphanumeric position.
-        Attribute:
-            prefix: default K(str)
-        """
+    """Chess Piece Named King
+    """
     prefix = 'K'
 
     def is_legal_move(self, position):
-        """constructor for king.
-        Args:
-            None
+        """King Constructor.
+        Arguments:
+            position: position on the board.
         Returns:
-            A coordinate value if the move is legal or not.
+            Checks if move is legal
         Examples:
         >>>
         >>> king.prefix
@@ -229,19 +215,17 @@ class King(ChessPiece):
 
 
 class ChessMatch(object):
-    """Object Creates Match and sets a piece.
-    Attributes:
-        None
+    """Creates Match and sets a piece on board.
     """
 
     def __init__(self, pieces=None):
-        """Creates Match if Pieces is not None.
+        """Creates Match if Pieces are not equivilent to None.
         Args:
-            pieces (dict): Dictionary of Pieces in Chessgame.
+            pieces (dict): Dictionary of Chess Pieces.
             log (list): List of moves to be used for logging positions and time.
         Returns:
-            pieces (dict): Pieces in game piece.
-            log (list): Empty list of logged moves.
+            pieces (dict): Pieces in Game
+            log (list): Blank list for future logging
         Examples:
         >>> white = King('e1')
         >>> black = King('e8')

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""ChessMaster"""
+"""Wk11 synthesizing task 1 thru 5 - chessmaster!"""
 
 import time
 
@@ -107,24 +107,24 @@ class ChessPiece(object):
 
 
 class Rook(ChessPiece):
-    """Object is a ChessPiece."""
+    """ChessPiece Object (Rook)"""
     prefix = 'R'
 
     def __init__(self, position):
         """An instance.
-        Args:
-            position: an alphanumeric position on the board.
+        Arguments:
+            position: alphanumeric position.
         Attribute:
-            prefix: A(str) by default 'R'- prefix of a rook
+            prefix: a string; Defaults at 'R'
         """
         ChessPiece.__init__(self, position)
 
     def is_legal_move(self, position):
-        """Constructor for Rook.
-        Args:
-            position: an allowed position on the board.
+        """Rook Constructor.
+        Argumentss:
+            position: position on board.
         Returns:
-            Checks if move does not work.
+            Checks move is legal.
         Examples:
             >>> rook = Rook('a1')
             >>> rook.prefix
@@ -146,28 +146,25 @@ class Rook(ChessPiece):
 
 
 class Bishop(ChessPiece):
-    """Object is a ChessPiece.
-
-    Attributes:
-        prefix(str) Default = B - Prefix of Bishop Chess piece.
+    """ChessPiece Object Named Bishop
     """
     prefix = 'B'
 
     def __init__(self, position):
         """An instance.
-        Args:
-            position: an alphanumeric position on the board.
+        Arguments:
+            position: alphanumeric position.
         Attribute:
-            prefix: A(str) by default 'B'.
+            prefix: string defaulted to 'B'.
         """
         ChessPiece.__init__(self, position)
 
     def is_legal_move(self, position):
         """Constructor for Bishop.
-        Args:
-            position: an allowed position on the board.
+        Arguments:
+            position: position on the board.
         Returns:
-            A coordinate value if the move is legal or not.
+            Checks if move is legal.
         Examples:
             >>> bishop = Bishop('a1')
             >>> bishop.prefix
@@ -177,28 +174,26 @@ class Bishop(ChessPiece):
             >>> bishop.move('c3')
             ('Ba1', 'Bc1', 1413252817.89340)
         """
-        old = self.algebraic_to_numeric(position)
-        new = self.algebraic_to_numeric(position)
+        oldpos = self.algebraic_to_numeric(position)
+        newpos = self.algebraic_to_numeric(position)
         if ChessPiece.is_legal_move(self, position):
-            if (old[0] + new[0]) % (old[1] + new[1]) is 0:
+            if (oldpos[0] + newpos[0]) % (oldpos[1] + newpos[1]) is 0:
                 return True
         else:
             return False
 
 
 class King(ChessPiece):
-    """Object is a chess peice.
-    Attributes:
-        prefix (str) Default = K - Prefix of King Chess piece.
+    """Chess Piece Named King
     """
     prefix = 'K'
 
     def is_legal_move(self, position):
-        """constructor for king.
-        Args:
-            None
+        """King Constructor.
+        Arguments:
+            position: position on the board.
         Returns:
-            A coordinate value if the move is legal or not.
+            Checks if move is legal
         Examples:
         >>>
         >>> king.prefix
@@ -220,19 +215,17 @@ class King(ChessPiece):
 
 
 class ChessMatch(object):
-    """Object Creates Match and sets a piece.
-    Attributes:
-        None
+    """Creates Match and sets a piece on board.
     """
 
     def __init__(self, pieces=None):
-        """Creates Match if Pieces is not None.
+        """Creates Match if Pieces are not equivilent to None.
         Args:
-            pieces (dict): Dictionary of Pieces in Chessgame.
+            pieces (dict): Dictionary of Chess Pieces.
             log (list): List of moves to be used for logging positions and time.
         Returns:
-            pieces (dict): Pieces in game piece.
-            log (list): Empty list of logged moves.
+            pieces (dict): Pieces in Game
+            log (list): Blank list for future logging
         Examples:
         >>> white = King('e1')
         >>> black = King('e8')
