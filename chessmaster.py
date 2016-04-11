@@ -200,3 +200,66 @@ class King(ChessPiece):
                     return False
             else:
                 return False
+
+
+class ChessMatch(object):
+    """Creates a class for the chess game
+
+        Attributes:
+        None
+    """
+
+    def __init__(self, pieces=None):
+        """Creates a constructor for the chess match.
+
+        Args:
+            pieces (dict): Chess pieces, default of None
+
+        Attributes:
+            log (list): An empty list
+        """
+        if pieces is None:
+            self.reset()
+        else:
+            self.pieces = pieces
+            self.log = []
+
+    def reset(self):
+        """Resets the pieces to their starting positions
+
+            Attributes:
+                pieces (dict): Starting positions of all pieces
+        """
+        self.log = []
+        self.pieces = {'Ra1': Rook('a1'),
+                       'Rh1': Rook('h1'),
+                       'Ra8': Rook('a8'),
+                       'Rh8': Rook('h8'),
+                       'Bc1': Bishop('c1'),
+                       'Bf1': Bishop('f1'),
+                       'Bc8': Bishop('c8'),
+                       'Bf8': Bishop('f8'),
+                       'Ke1': King('e1'),
+                       'Ke8': King('e8')}
+        return self.pieces
+
+    def move(self, piece, position):
+        """Defines a function to move the pieces
+
+            Args:
+                piece (str): The piece to be moved in Full Notation
+                position (str): The destination coordinate
+
+            Returns:
+                tuple: a log entry for the move if move is valid
+                boolean: a False value if move is invalid
+        """
+        ChessPiece.move.__init__(self)
+        if piece in self.pieces:
+            chesspiece = self.pieces[piece]
+            move = chesspiece.move(position)
+            self.log.append(move)
+            self.pieces.pop(piece)
+            self.pieces[move[1]] = chesspiece
+        else:
+            return False
